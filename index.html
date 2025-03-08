@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THU</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body và nền màu hồng */
+        body {
+            background-color: pink;
+            color: white;
+            font-family: 'Pacifico', cursive; /* Kiểu chữ đẹp */
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container chứa văn bản */
+        .container {
+            text-align: center;
+            z-index: 2; /* Đảm bảo văn bản nằm trên các ảnh */
+            position: relative;
+        }
+
+        .container h1 {
+            font-size: 4rem; /* Kích thước chữ lớn hơn */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng chữ */
+            animation: fadeIn 2s ease-in-out, slideIn 1.5s ease-in-out; /* Hiệu ứng fade-in và slide-in */
+        }
+
+        .container h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng chữ */
+            animation: fadeIn 2s ease-in-out, slideIn 1.5s ease-in-out; /* Hiệu ứng fade-in và slide-in */
+        }
+
+        .container p {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng chữ */
+            animation: fadeIn 2s ease-in-out, slideIn 1.5s ease-in-out; /* Hiệu ứng fade-in và slide-in */
+        }
+
+        /* Hiệu ứng fade-in */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Hiệu ứng slide-in */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Các ảnh xung quanh nền */
+        .background-image {
+            position: absolute;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0.7; /* Độ trong suốt của ảnh */
+            transition: transform 0.1s ease-out; /* Hiệu ứng di chuyển mượt mà */
+        }
+
+        /* Trái tim để chuyển đổi lời chúc */
+        .heart-button {
+            position: relative;
+            width: 100px;
+            height: 90px;
+            margin: 20px auto;
+            cursor: pointer;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .heart-button::before,
+        .heart-button::after {
+            position: absolute;
+            content: "";
+            left: 50px;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background: #e91e63;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart-button::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Ẩn phần tử */
+        .hidden {
+            display: none;
+        }
+
+        /* Chỉ dẫn bấm trái tim */
+        .instruction {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #e91e63;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng chữ */
+        }
+    </style>
+    <!-- Thêm font chữ từ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="background-music" autoplay loop>
+        <source src="Way back home (TikTok Vietnam) .mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+    </audio>
+    <!-- Container chứa văn bản -->
+    <div class="container">
+        <!-- Phần tử chứa dòng chữ ban đầu -->
+        <div id="initial-message">
+            <h1>HAPPY WOMEN'S DAY!!</h1>
+            <h1>❤️恭喜国际女性!!❤️</h1>
+            <p>Chúc Cậu Một Ngày 8-3 Thật Ý Nghĩa Nha❤️ </p>
+        </div>
+        <!-- Thêm thẻ ghi lời chúc và trái tim -->
+        <div id="message">
+            <p>❤️阮氏秋❤️</p>
+            <!-- Thêm chỉ dẫn bấm trái tim -->
+            <p class="instruction">Cậu bấm vào❤️bên dưới nha</p>
+            <div class="heart-button" id="heart-button"></div>
+        </div>
+    </div>
+
+    <!-- Các ảnh xung quanh nền -->
+    <img src="t.jpg" alt="Ảnh 1" class="background-image" style="top: 10%; left: 5%; width: 120px; height: 120px;">
+    <img src="t2.jpg" alt="Ảnh 2" class="background-image" style="top: 20%; left: 80%; width: 180px; height: 180px;">
+    <img src="t3.jpg" alt="Ảnh 3" class="background-image" style="top: 70%; left: 10%; width: 150px; height: 150px;">
+    <img src="t4.jpg" alt="Ảnh 4" class="background-image" style="top: 60%; left: 70%; width: 200px; height: 200px;">
+    <img src="t5.jpg" alt="Ảnh 5" class="background-image" style="top: 40%; left: 40%; width: 100px; height: 100px;">
+    <img src="t6.jpg" alt="Ảnh 6" class="background-image" style="top: 15%; left: 30%; width: 160px; height: 160px;">
+    <img src="t7.jpg" alt="Ảnh 7" class="background-image" style="top: 25%; left: 60%; width: 140px; height: 140px;">
+    <img src="t9.jpg" alt="Ảnh 8" class="background-image" style="top: 50%; left: 20%; width: 190px; height: 190px;">
+
+    <!-- Thêm nhạc tự động phát -->
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('background-music');
+
+    // Cố gắng phát nhạc ngay khi trang tải xong
+    const playMusic = () => {
+        music.play().catch(() => {
+            document.addEventListener('click', () => music.play(), { once: true });
+        });
+    };
+
+    playMusic();
+
+    // Hiệu ứng ảnh di chuyển theo chuột
+    const images = document.querySelectorAll('.background-image');
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        images.forEach((img) => {
+            const moveX = (mouseX - window.innerWidth / 2) / 50;
+            const moveY = (mouseY - window.innerHeight / 2) / 50;
+            img.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    });
+
+    // Sự kiện bấm vào trái tim thay đổi lời chúc
+    const heartButton = document.getElementById('heart-button');
+    const initialMessageDiv = document.getElementById('initial-message');
+    const messageDiv = document.getElementById('message');
+
+    heartButton.addEventListener('click', () => {
+        // Xóa hoàn toàn nội dung ban đầu khỏi DOM
+        initialMessageDiv.remove();
+
+        // Hiển thị nội dung mới
+        messageDiv.classList.remove('hidden');
+
+        // Cập nhật nội dung lời chúc
+        messageDiv.innerHTML = `
+            <h2>Chúc người đẹp luôn luôn hạnh phúc nheeee❤️</h2>
+            <p>Tớ chúc người đẹp xinh gái hơn hihi❤️</p>
+            <p>Không còn tiêu cực nữa nha</p>
+            <p>Và sẽ sớm thành công trong sự nghiệp mà cậu mong muốn nhé!!</p>
+            <p>Hãy luôn mỉm cười và hạnh phúc nhé!</p>
+            <p>❤️❤️❤️</p>
+        `;
+    });
+});
+
+    </script>
+</body>
+</html>
